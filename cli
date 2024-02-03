@@ -21,7 +21,7 @@ if($name) {
         echo "Text is too long. It should be no longer than 25 characters \n";
     } else {
         $user = to_prety_url($name);
-        echo "Download Greeting: http://localhost:6003?name=$user \n";
+        echo "Download Greeting at: http://localhost:6003?name=$user \n";
     }
 } else {
     echo "Empty Data \n";

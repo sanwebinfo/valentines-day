@@ -38,6 +38,18 @@ or
 - Enter your Partner name and get the Greeting Page URL
 - Done
 
+## Free Deploy 😍
+
+- Deploy it on Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsanwebinfo%2Fvalentines-day)
+
+```sh
+https://example.vercel.app/?name=partnername
+```
+
+- you can host it on your server too - just upload the `index.php` file
+
 ## LICENESE
 
 MIT

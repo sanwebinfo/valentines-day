@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "cleanUrls": true,
+    "builds": [
+      {
+        "src": "*.php",
+        "use": "vercel-php@0.6.1"
+      }
+    ]
+}
