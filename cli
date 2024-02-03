@@ -2,7 +2,7 @@
 
 <?php
 
-$name = (string)readline("Your Parter Name: ");
+$name = (string)readline("Your Partner Name: ");
 
 //friendly URL conversion
 function to_prety_url($str){
