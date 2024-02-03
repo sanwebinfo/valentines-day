@@ -1,5 +1,11 @@
 <?php
 
+header('Content-type: text/html; charset=UTF-8');
+header('X-Frame-Options: DENY');
+header('X-XSS-Protection: 1; mode=block');
+header('X-Content-Type-Options: nosniff');
+header('X-Robots-Tag: noindex, nofollow', true);
+
 $user = '';
 
 if(isset($_GET['name'])){
@@ -8,8 +14,18 @@ if(isset($_GET['name'])){
 
 $cleanup = htmlspecialchars($user,ENT_COMPAT);
 $randomNumber = rand();
-$specialChars = ["@", "!", "-", "<", ">", "[", "]", "?", "(", ")", "script", "<>", "alert", "php", "`", "'"];
+$specialChars = ["@", "!", "-", "<", ">", "[", "]", "?", "(", ")", "script", "<>", "alert", "php", "`", "'", "+", ' '];
 $partner = str_replace($specialChars, '', $cleanup);
+
+function pageurl(){
+    if(isset($_SERVER['HTTPS'])){
+        $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+    }
+    else{
+        $protocol = 'http';
+    }
+    return $protocol . "://" . $_SERVER['HTTP_HOST'];
+}
 
 ?>
 
@@ -21,10 +37,12 @@ $partner = str_replace($specialChars, '', $cleanup);
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
-    <title><?php echo "Hi $partner"; ?></title>
-    <meta name="description" content="<?php echo "Happy Valentine's Day: $partner"; ?> "/>
-
+    <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABqklEQVQ4jZ2Tv0scURDHP7P7SGWh14mkuXJZEH8cgqUWcklAsLBbCEEJSprkD7hD/4BUISHEkMBBiivs5LhCwRQBuWgQji2vT7NeYeF7GxwLd7nl4knMwMDMfL8z876P94TMLt+8D0U0EggQSsAjwMvga8ChJAqxqjTG3m53AQTg4tXHDRH9ABj+zf6oytbEu5d78nvzcyiivx7QXBwy46XOi5z1jbM+Be+nqVfP8yzuD3FM6rzIs9YE1hqGvDf15cVunmdx7w5eYJw1pcGptC9CD4gBUuef5Ujq/BhAlTLIeFYuyfmTZgeYv+2nPt1a371P+Hm1WUPYydKf0lnePwVmh3hnlcO1uc7yvgJUDtdG8oy98kduK2KjeHI0fzCQINSXOk/vlXBUOaihAwnGWd8V5r1uhe1VIK52V6JW2D4FqHZX5lphuwEE7ooyaN7gjLMmKSwYL+pMnV+MA/6+g8RYa2Lg2RBQbj4+rll7uymLy3coiuXb5PdQVf7rKYvojAB8Lf3YUJUHfSYR3XqeLO5JXvk0dhKqSqQQoCO+s5AIxCLa2Lxc6ALcAPwS26XFskWbAAAAAElFTkSuQmCC" />
+    
+    <title><?php if ($partner) { echo "Hi $partner"; } else { echo "Hi Partner Name"; } ?></title>
+    <meta name="description" content="<?php if ($partner) { echo "Happy Valentine's Day: $partner"; } else { echo "Happy Valentine's Day: Partner Name"; } ?>"/>
     <?php $current_page = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; echo '<link rel="canonical" href="'.$current_page.'" />'; ?>
+
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,11 +56,10 @@ $partner = str_replace($specialChars, '', $cleanup);
     pre {
     font-family: 'Space Mono', monospace;
     font-size:14px;
-    border: #303952 1px solid;
+    border: #6D214F 1px solid;
     color: #fdcb6e;
     line-height: 1.5em;
-    background: #12372A;
-    border-radius: 5px;
+    background: #6D214F;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased !important;
     -moz-font-smoothing: antialiased !important;
@@ -136,7 +153,7 @@ echo '</div></div></div></section>';
 
 } else {
     echo '<section class="section"><div class="container content"><div class="columns is-centered"><div class="column is-half">';
-    echo '<pre style="display: flex; justify-content: center;" >';
+    echo '<pre style="display: flex; justify-content: center;">';
     echo "No user input data";
     echo "</pre>";
     echo '</div></div></div></section>';
@@ -144,10 +161,25 @@ echo '</div></div></div></section>';
 
 ?>
 
+<section class="section">
+<div class="container content">
+<div class="columns is-centered">
+<div class="column is-half">
+<form method="GET" rel="nofollow noopener noreferrer" target="_blank" action="<?php echo pageurl(); ?>">
+<div class="field">
+<input class="input is-rounded" name="name" type="text" placeholder="Partner Name" required="" minlength="4" maxlength="25">
+</div>
+<div class="field">
+<button type="submit" class="button join-more is-link is-rounded">⏏ Create My Greeting</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<br>
+
 <script>html2canvas(document.getElementById("copy-quote"), {
-     onclone: function (clonedDoc) {
-        clonedDoc.getElementById('copy-quote').style.display = 'block';
-    },
   allowTaint: true,
   useCORS: true,
   width: 1024,
@@ -160,7 +192,7 @@ echo '</div></div></div></section>';
     document.getElementById("result").innerHTML =
       '<br><p class="content has-text-centered"><a class="button join-more is-warning is-rounded" href=' +
       image +
-      ' download="valentines-day-<?php echo $randomNumber; ?>.png">⬇ Download image</a></p>';
+      ' download="valentines-day-<?php echo $randomNumber; ?>.png">▶ Download image</a></p>';
   })
   .catch((e) => {
     console.log(e);
