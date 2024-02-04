@@ -36,7 +36,7 @@ or
 ```
 
 - Enter your Partner name and get the Greeting Page URL
-- Next Create Greeting from webpage
+- you can also Create a Greeting image from webpage too
 
 ```sh
 ## Open URL in webpage
@@ -76,7 +76,7 @@ location @rewriteurl {
 https://example.vercel.app/?name=partnername
 ```
 
-- you can host it on your server too - just upload the `index.php` file
+- you can also host it on your server - just upload the `index.php` file
 
 ## LICENESE
 
