@@ -10,3 +10,5 @@ README.md
 .gitignore
 cli
 cli.php
+generated
+og/generated

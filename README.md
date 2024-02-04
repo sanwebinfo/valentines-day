@@ -47,7 +47,25 @@ http://localhost:6003/?name=partnername
 
 ```
 
+- **it supports English Letters, Numbers and Selected Symbols**
 - Done
+
+## OG image
+
+- if you wanna a OG image then use it like this
+
+```sh
+http://localhost:6003/og/?title=partnername
+```
+
+- it require `php-imagick` and `imagemagick` Packages
+
+```sh
+
+## install both packages
+sudo apt install imagemagick
+sudo apt-get install php-imagick
+```
 
 ## SEO Friendly URL
 

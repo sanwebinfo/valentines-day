@@ -185,7 +185,7 @@ input {
 
 <?php
 
-if($partner) {
+if (preg_match('/^[a-z0-9 .\-]+$/i', $partner)) {
 
 $name = "
 
@@ -236,7 +236,7 @@ echo '</div></div></div></section>';
 } else {
     echo '<section class="section"><div class="container content"><div class="columns is-centered"><div class="column is-half">';
     echo '<pre style="display: flex; justify-content: center;">';
-    echo "Enter Your Partner Name";
+    echo "Enter Your Partner Name (Supports English Letters only)";
     echo "</pre>";
     echo '</div></div></div></section>';
 }

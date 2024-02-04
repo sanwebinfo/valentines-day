@@ -1,2 +1,4 @@
 .vercel
 vendor
+generated
+og/generated
