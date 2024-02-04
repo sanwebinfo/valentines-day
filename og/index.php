@@ -14,9 +14,12 @@ header('X-Frame-Options: DENY');
 header('X-XSS-Protection: 1; mode=block');
 header('X-Content-Type-Options: nosniff');
 header('X-Robots-Tag: noindex, nofollow', true);
+header('Pragma: public');
+header('Cache-Control: max-age=86400');
+header('Expires: '. gmdate('D, d M Y H:i:s \G\M\T', time() + 86400));
 
 // Background image location
-$imageUrl = "./og.png";
+$imageUrl = "./oglove.png";
 // Path to the custom font, must be in ttf format
 $font = "./font.ttf";
 // Get the text from the URL link.com/?title=text
