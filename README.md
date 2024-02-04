@@ -36,7 +36,35 @@ or
 ```
 
 - Enter your Partner name and get the Greeting Page URL
+- Next Create Greeting from webpage
+
+```sh
+## Open URL in webpage
+http://localhost:6003/
+
+## Enter your Partner Name in Form and Click Button to Generate the Greeting image
+http://localhost:6003/?name=partnername
+
+```
+
 - Done
+
+## SEO Friendly URL
+
+- **nginx** SEO Friendly URL
+
+```sh
+location / {
+try_files $uri $uri/ =404 @rewriteurl;
+  #try_files $uri $uri/ /index.php?$args;
+}
+
+location @rewriteurl {
+    rewrite ^/(.*)$ /?name=$1;
+}
+```
+
+- **`https://example.com/?name=partnername` to `https://example.com/partnername`**
 
 ## Free Deploy 😍
 

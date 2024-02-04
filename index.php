@@ -93,6 +93,88 @@ pre code {
     max-height: 0;
     overflow:hidden
 }
+.sign-button {
+    max-width: 100%;
+}
+.sign-button {
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 12px;
+    -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased !important;
+   -moz-font-smoothing: antialiased !important;
+   text-rendering: optimizelegibility !important;
+}
+.input-box,
+textarea,
+.sign-button {
+	width: 45rem !important;
+	min-height: 3rem;
+}
+button {
+    max-width: 100%;
+}
+.card-content.login {
+    background-color: #ffe96e;
+    box-shadow: 0 2px 4px #5351464d;
+    border-radius: 32px;
+    -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased !important;
+   -moz-font-smoothing: antialiased !important;
+   text-rendering: optimizelegibility !important;
+    }
+    .card-content.login {
+        border: none;
+        padding-top: 50px;
+        padding-bottom: 50px;
+}
+.user-form p {
+    letter-spacing: .03em;
+    line-height: 20px;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    font-size: 16px;
+    color: #221f1f;
+    -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased !important;
+   -moz-font-smoothing: antialiased !important;
+   text-rendering: optimizelegibility !important;
+}
+.user-form button {
+    display: flex;
+    flex-grow: 0.3;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 32px;
+    padding: 12px;
+    -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased !important;
+   -moz-font-smoothing: antialiased !important;
+   text-rendering: optimizelegibility !important;
+}
+.user-form input {
+    display: flex;
+    flex-grow: 0.3;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 32px;
+    padding: 12px;
+    -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased !important;
+   -moz-font-smoothing: antialiased !important;
+   text-rendering: optimizelegibility !important;
+}
+input {
+    text-align: center;
+}
+    ::-webkit-input-placeholder {
+    text-align: center;
+}
+    :-moz-placeholder {
+    text-align: center;
+}
 </style>
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -154,7 +236,7 @@ echo '</div></div></div></section>';
 } else {
     echo '<section class="section"><div class="container content"><div class="columns is-centered"><div class="column is-half">';
     echo '<pre style="display: flex; justify-content: center;">';
-    echo "No user input data";
+    echo "Enter Your Partner Name";
     echo "</pre>";
     echo '</div></div></div></section>';
 }
@@ -165,14 +247,17 @@ echo '</div></div></div></section>';
 <div class="container content">
 <div class="columns is-centered">
 <div class="column is-half">
+<div class="card-content content user-form login">
+<p>Terminal Style Greeting - Just Enter your Partner Name (without Space)</p>
 <form method="GET" rel="nofollow noopener noreferrer" target="_blank" action="<?php echo pageurl(); ?>">
 <div class="field">
-<input class="input is-rounded" name="name" type="text" placeholder="Partner Name" required="" minlength="4" maxlength="25">
+<input class="input is-info column is-half input-box" name="name" type="text" placeholder="Partner Name" required="" minlength="4" maxlength="25">
 </div>
 <div class="field">
-<button type="submit" class="button join-more is-link is-rounded">⏏ Create My Greeting</button>
+<button type="submit" class="button is-info sign-button">⏏ Create My Greeting</button>
 </div>
 </form>
+</div>
 </div>
 </div>
 </div>
