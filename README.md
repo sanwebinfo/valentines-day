@@ -52,7 +52,7 @@ http://localhost:6003/?name=partnername
 
 ## OG image
 
-- if you wanna a OG image then use it like this
+- if you wanna an OG image then use it like this
 
 ```sh
 http://localhost:6003/og/?title=partnername
@@ -66,6 +66,9 @@ http://localhost:6003/og/?title=partnername
 sudo apt install imagemagick
 sudo apt-get install php-imagick
 ```
+
+![love-sanweb-info-GId1GAhbzR](https://github.com/sanwebinfo/valentines-day/assets/10300271/d58daa21-0285-4772-a130-7e4a73bf9548)
+
 
 ## SEO Friendly URL
 
