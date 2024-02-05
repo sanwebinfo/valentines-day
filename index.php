@@ -131,7 +131,11 @@ button {
         padding-top: 50px;
         padding-bottom: 50px;
 }
+.user-form {
+    font-family: 'Space Mono', monospace;
+}
 .user-form p {
+    font-family: 'Space Mono', monospace;
     letter-spacing: .03em;
     line-height: 20px;
     margin-bottom: 20px;
@@ -144,6 +148,7 @@ button {
    text-rendering: optimizelegibility !important;
 }
 .user-form button {
+    font-family: 'Space Mono', monospace;
     display: flex;
     flex-grow: 0.3;
     font-weight: 500;
@@ -157,6 +162,7 @@ button {
    text-rendering: optimizelegibility !important;
 }
 .user-form input {
+    font-family: 'Space Mono', monospace;
     display: flex;
     flex-grow: 0.3;
     font-weight: 500;
@@ -169,6 +175,7 @@ button {
    text-rendering: optimizelegibility !important;
 }
 input {
+    font-family: 'Space Mono', monospace;
     text-align: center;
 }
     ::-webkit-input-placeholder {
@@ -187,8 +194,9 @@ input {
 }
 #terminal__barimg {
   display: flex;
-  width: 314%;
+  width: 313%;
   height: 30px;
+  align-items: center;
   padding: 0 8px;
   background: linear-gradient(#504b45 0%,#3c3b37 100%);
 }
@@ -218,6 +226,33 @@ input {
 #bar__button--exit {
   background: linear-gradient(#f37458 0%, #de4c12 100%);
   background-clip: padding-box;
+}
+.fakeButtons {
+  height: 14px;
+  width: 14px;
+  border-radius: 100%;
+  border: 1px solid #000;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin-right: 3px;
+  top: 1px;
+  left: 7px;
+  background-color: #ff3b47;
+  border-color: #9d252b;
+  display: inline-block;
+}
+.fakeMinimize {
+  left: 11px;
+  background-color: #ffc100;
+  border-color: #9d802c;
+}
+.fakeZoom {
+  left: 16px;
+  background-color: #00d742;
+  border-color: #049931;
 }
 </style>
 
@@ -262,11 +297,11 @@ $partner@❤️:~/💑$
 
 echo '<div class="hide-me"><section class="section"><div class="container content"><div class="columns is-centered"><div class="column is-half">';
 echo '<div id="copy-quote">';
-echo '<section id="terminal__barimg"><div id="bar__buttons">
-<button class="bar__button" id="bar__button--exit">&#10005;</button>
-<button class="bar__button">&#9472;</button>
-<button class="bar__button">&#9723;</button>
-</div></section>';
+echo '<section id="terminal__barimg">
+<div class="fakeButtons fakeClose"></div>
+<div class="fakeButtons fakeMinimize"></div>
+<div class="fakeButtons fakeZoom"></div>
+</section>';
 echo '<pre class="user-img">';
 echo "$name";
 echo "</pre>";
@@ -277,11 +312,11 @@ echo '</div></div></div></section></div>';
 
 echo '<section class="section"><div class="container content"><div class="columns is-centered"><div class="column is-half">';
 echo '<h2 class="is-size-5 has-text-centered">💜 Linux Terminal Style Greeting 💜</h2><br>';
-echo '<section id="terminal__bar"><div id="bar__buttons">
-<button class="bar__button" id="bar__button--exit">&#10005;</button>
-<button class="bar__button">&#9472;</button>
-<button class="bar__button">&#9723;</button>
-</div></section>';
+echo '<section id="terminal__bar">
+<div class="fakeButtons fakeClose"></div>
+<div class="fakeButtons fakeMinimize"></div>
+<div class="fakeButtons fakeZoom"></div>
+</section>';
 echo '<pre>';
 echo "$name";
 echo "</pre>";
@@ -291,6 +326,7 @@ echo '</div></div></div></section>';
 
 } else {
     echo '<section class="section"><div class="container content"><div class="columns is-centered"><div class="column is-half">';
+    echo "<img src='/valentines-day.jpg' loading='lazy' alt='Valentines Day'><br><br>";
     echo '<div class="notification is-danger text-center">';
     echo "Enter Your Partner Name (Supports English Letters only)";
     echo "</div>";
@@ -304,7 +340,7 @@ echo '</div></div></div></section>';
 <div class="columns is-centered">
 <div class="column is-half">
 <div class="card-content content user-form login">
-<p>Terminal Style Greeting - Just Enter your Partner Name (without Space)</p>
+<p class="has-text-centered is-size-6">Terminal Style Greeting - Just Enter your Partner Name (without Space)</p>
 <form method="GET" rel="nofollow noopener noreferrer" target="_blank" action="<?php echo pageurl(); ?>">
 <div class="field">
 <input class="input is-info column is-half input-box" name="name" type="text" placeholder="Partner Name" required="" minlength="4" maxlength="25">
