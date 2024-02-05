@@ -52,6 +52,8 @@ function pageurl(){
 <style>
     body {
         font-family: 'Space Mono', monospace;
+        background: #9AECDB;
+        min-height: 100vh;
     }
     pre {
     font-family: 'Space Mono', monospace;
@@ -227,17 +229,19 @@ echo '</div></div></div></section></div>';
 // Preview to users
 
 echo '<section class="section"><div class="container content"><div class="columns is-centered"><div class="column is-half">';
+echo '<h2 class="is-size-5 has-text-centered">💜 Linux Terminal Style Greeting 💜</h2><br>';
 echo '<pre>';
 echo "$name";
 echo "</pre>";
-echo '<div id="result">';
+echo '<p class="has-text-centered"><small><b>image will be downloaded in Square Shape format <br> 1024x1024 Social Media Post Size</b></small></p>';
+echo '<div id="result"></div>';
 echo '</div></div></div></section>';
 
 } else {
     echo '<section class="section"><div class="container content"><div class="columns is-centered"><div class="column is-half">';
-    echo '<pre style="display: flex; justify-content: center;">';
+    echo '<div class="notification is-danger text-center">';
     echo "Enter Your Partner Name (Supports English Letters only)";
-    echo "</pre>";
+    echo "</div>";
     echo '</div></div></div></section>';
 }
 
@@ -254,7 +258,7 @@ echo '</div></div></div></section>';
 <input class="input is-info column is-half input-box" name="name" type="text" placeholder="Partner Name" required="" minlength="4" maxlength="25">
 </div>
 <div class="field">
-<button type="submit" class="button is-info sign-button">⏏ Create My Greeting</button>
+<button type="submit" class="button is-danger sign-button">⏏ Create My Greeting</button>
 </div>
 </form>
 </div>
@@ -275,7 +279,7 @@ echo '</div></div></div></section>';
   .then(function (canvas) {
     let image = canvas.toDataURL("image/png", 0.5);
     document.getElementById("result").innerHTML =
-      '<br><p class="content has-text-centered"><a class="button join-more is-warning is-rounded" href=' +
+      '<p class="content has-text-centered"><a class="button join-more is-danger is-rounded" href=' +
       image +
       ' download="valentines-day-<?php echo $randomNumber; ?>.png">▶ Download image</a></p>';
   })

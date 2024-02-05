@@ -82,7 +82,7 @@ function insertTextOverImage($imageUrl, $font, $title) {
 
         // Save the modified image
         if (preg_match('/^[a-z0-9 .\-]+$/i', $title)) {
-            $outputPath = 'generated/' . sanitizeFileName($title) . '.jpg';
+            $outputPath = 'generated/' . sanitizeFileName($title) . '.png';
             $image->writeImage($outputPath);
 
             // Destroy the image objects
