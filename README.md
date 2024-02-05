@@ -107,6 +107,10 @@ https://example.vercel.app/?name=partnername
 
 - you can also host it on your server - just upload the `index.php` file
 
+## Credits
+
+Terminal Concept - <https://github.com/fobabs/ubuntu-terminal>
+
 ## LICENESE
 
 MIT

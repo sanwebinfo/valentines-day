@@ -58,10 +58,10 @@ function pageurl(){
     pre {
     font-family: 'Space Mono', monospace;
     font-size:14px;
-    border: #6D214F 1px solid;
     color: #fdcb6e;
+    text-shadow: 0 0 3px #fdcb6e;
     line-height: 1.5em;
-    background: #6D214F;
+    background:  #2c001e;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased !important;
     -moz-font-smoothing: antialiased !important;
@@ -177,6 +177,48 @@ input {
     :-moz-placeholder {
     text-align: center;
 }
+#terminal__bar {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  align-items: center;
+  padding: 0 8px;
+  background: linear-gradient(#504b45 0%,#3c3b37 100%);
+}
+#terminal__barimg {
+  display: flex;
+  width: 314%;
+  height: 30px;
+  padding: 0 8px;
+  background: linear-gradient(#504b45 0%,#3c3b37 100%);
+}
+#bar__buttons {
+  display: flex;
+  align-items: center;
+}
+.bar__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin-right: 5px;
+  font-size: 8px;
+  height: 12px;
+  width: 12px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 100%;
+  background: linear-gradient(#7d7871 0%, #595953 100%);
+  text-shadow: 0px 1px 0px rgba(255,255,255,0.2);
+  box-shadow: 0px 0px 1px 0px #41403A, 0px 1px 1px 0px #474642;
+}
+.bar__button:focus {
+  outline: none;
+}
+#bar__button--exit {
+  background: linear-gradient(#f37458 0%, #de4c12 100%);
+  background-clip: padding-box;
+}
 </style>
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -220,6 +262,11 @@ $partner@❤️:~/💑$
 
 echo '<div class="hide-me"><section class="section"><div class="container content"><div class="columns is-centered"><div class="column is-half">';
 echo '<div id="copy-quote">';
+echo '<section id="terminal__barimg"><div id="bar__buttons">
+<button class="bar__button" id="bar__button--exit">&#10005;</button>
+<button class="bar__button">&#9472;</button>
+<button class="bar__button">&#9723;</button>
+</div></section>';
 echo '<pre class="user-img">';
 echo "$name";
 echo "</pre>";
@@ -230,6 +277,11 @@ echo '</div></div></div></section></div>';
 
 echo '<section class="section"><div class="container content"><div class="columns is-centered"><div class="column is-half">';
 echo '<h2 class="is-size-5 has-text-centered">💜 Linux Terminal Style Greeting 💜</h2><br>';
+echo '<section id="terminal__bar"><div id="bar__buttons">
+<button class="bar__button" id="bar__button--exit">&#10005;</button>
+<button class="bar__button">&#9472;</button>
+<button class="bar__button">&#9723;</button>
+</div></section>';
 echo '<pre>';
 echo "$name";
 echo "</pre>";
