@@ -1,10 +1,19 @@
-# Valentine's Day
+# Valentine's Day 💜  
 
-Happy Valentine's Day Terminal Style Wish image ❤️ Impress your Partner ❤️
+Happy Valentine's Day Terminal Style Wish image ❤️ Impress your Partner ❤️  
 
-> Built using PHP 💗  
+Free Online Valentine's Day Card Maker - Valentine' Day Greeting image Generator with Name.  
+
+> Linux Terminal Style valentines day wish - Built using PHP 💗  
 
 ![valentines-day-14028337](https://github.com/sanwebinfo/valentines-day/assets/10300271/acf69a23-2952-4997-9e69-527d80259d24)
+
+## Built using
+
+- PHP
+- Bulma CSS
+- `html2canvas` for convert HTML Content to image
+- `Imagick` for OG image Generation
 
 ## usage
 
@@ -68,7 +77,6 @@ sudo apt-get install php-imagick
 ```
 
 ![love-sanweb-info-GId1GAhbzR](https://github.com/sanwebinfo/valentines-day/assets/10300271/d58daa21-0285-4772-a130-7e4a73bf9548)
-
 
 ## SEO Friendly URL
 
