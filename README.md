@@ -4,9 +4,9 @@ Happy Valentine's Day Terminal Style Wish image ❤️ Impress your Partner ❤�
 
 Free Online Valentine's Day Card Maker - Valentine' Day Greeting Image Generator with Name.  
 
-> Linux Terminal Style valentines day wish - Built using PHP 💗  
+> Linux Terminal Style valentine's day wishes - Built using PHP 💗  
 
-![valentines-day-483599793](https://github.com/sanwebinfo/valentines-day/assets/10300271/2fbe8c5b-cc7a-4f77-a374-3476ece1f5a1)  
+![valentine's day wishes](https://raw.githubusercontent.com/sanwebinfo/valentines-day/main/valentines-day.jpg)  
 
 ## Built using
 
