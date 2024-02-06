@@ -1,0 +1,152 @@
+#!/usr/bin/env php
+
+<?php
+
+/**
+ * This CLI Create a Valentine's Day Greeting Card Webpage Link and ASCII Text art.
+ * Get a Valentine's Day Greeting with an image page link.
+ * Create ASCII Valentine's Text art Greeting image.
+ *
+ * CLI written by Santhosh MSK, sanweb (https://github.com/sanwebinfo)
+ * Free Online Valentine's Day Card Maker (https://love.sanweb.info)
+ *
+ */
+
+function to_prety_url($str){
+    if($str !== mb_convert_encoding( mb_convert_encoding($str, 'UTF-32', 'UTF-8'), 'UTF-8', 'UTF-32') )
+            $str = mb_convert_encoding($str, 'UTF-8', mb_detect_encoding($str));
+            $str = htmlentities($str, ENT_NOQUOTES, 'UTF-8');
+            $str = preg_replace('`&([a-z]{1,2})(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig);`i', '\1', $str);
+            $str = html_entity_decode($str, ENT_NOQUOTES, 'UTF-8');
+            $str = preg_replace(array('`[^a-z0-9]`i','`[-]+`'), '-', $str);
+            $str = strtolower( trim($str, '-') );
+            return $str;
+}
+
+function get_user_input($prompt = null) {
+    $name = readline($prompt);
+    return $name;
+}
+
+function loadingSpinner($iterations = 30, $delay = 100000) {
+    $colors = ["\033[36m"];
+    $chars = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
+    $countColors = count($colors);
+    $countChars = count($chars);
+
+    for ($i = 0; $i < $iterations; $i++) {
+        $color = $colors[$i % $countColors];
+        $char = $chars[$i % $countChars];
+
+        echo "\033[0G";
+        echo $color . $char . $color . " Generating...." . "\033[0m";
+        usleep($delay);
+    }
+
+    echo "\033[2K\r";
+
+}
+
+function clearGap() {
+    echo "\033[1A";
+    echo "\r\033[K";
+}
+function clearOutput() {
+    echo "\033[1F";
+    echo "\033[K";
+}
+function copyToClipboard($text) {
+    $escapedText = escapeshellarg($text);
+    shell_exec("echo $escapedText | termux-clipboard-set");
+    sleep(1);
+    shell_exec("termux-toast 'URL Copied to Clipboard' && termux-vibrate");
+}
+
+if ($argc > 1) {
+
+    if ($argv[1] == 'create') {
+
+        $name = get_user_input("Your Partner Name: ");
+
+        sleep(1); 
+        clearOutput();
+        clearGap();
+
+        if($name) {
+            if (isset($name[25])) {
+                echo "\e[31m\nText is too long. It should be no longer than 25 characters\e[0m \n\n";
+            } else {
+                echo "\n";
+                loadingSpinner();
+                sleep(1); 
+                clearOutput();
+                $user = to_prety_url($name);
+                $url = "https://love.sanweb.info/$user";
+                echo "\e[32m\nDownload your Greeting at:\e[0m \e[33m$url\e[0m \n\n";
+                copyToClipboard($url);
+            }
+        } else {
+            echo "\e[31m\nEmpty Data \e[0m \n\n";
+        }
+    }
+elseif($argv[1] == 'greeting') {
+
+    $name = get_user_input("Your Partner Name: ");
+
+    sleep(1); 
+    clearOutput();
+    clearGap();
+
+    if($name) {
+        if (isset($name[25])) {
+            echo "\e[31m\nText is too long. It should be no longer than 25 characters\e[0m \n\n";
+        } else {
+            echo "\n";
+            loadingSpinner();
+            sleep(1); 
+            clearOutput();
+            $user = to_prety_url($name);
+$greeting = "
+\e[32m$name@:~/💑 $\e[0m
+\e[91m
+
+               ||
+           ___\||
+           ____\|   %%%       %%%
+                \  %   %     %   %
+                 \%     %   %     %
+                 %\      % %       %
+                %  \      %         %
+                %   \               %
+                %    \   BE MY      %
+                 %    \             %
+                  %   VALENTINE    %
+                   %    \         %
+                    %    \       %
+                     %    \     %
+                      %    \   %
+                       %    \ %
+                        %   %\
+                         % %  \ ||
+                          %  __\||
+                             ___\|
+
+         
+\e[0m";
+        echo $greeting;
+    }
+} else {
+    echo "\e[31m\nEmpty Data \e[0m \n\n";
+}
+} elseif($argv[1] == 'help') {
+    echo "\e[94m Valentine's Day Greetings
+
+    php cli create : Get a Valentine's Day Greeting with an image page link.
+    php cli greeting : Create ASCII Valentine's Text art Greeting image
+    php ci help : Get information related to CLI\e[0m \n\n";
+} elseif(!empty($argv[1])) {
+    echo "\e[31mCommand not Found\n \e[0m \n";
+}
+} else {
+    echo "\e[31mEmpty data Was Passed\n \e[0m \n";
+}
