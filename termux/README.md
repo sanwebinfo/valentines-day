@@ -15,4 +15,22 @@ pkg install termux-api
 
 ```
 
+- Run the CLI
+
+```sh
+
+## Set Execute Permission
+chmod a+x cli
+
+## run this on Termux
+php cli create
+php cli greeting
+
+or 
+
+./cli create
+./cli greeting
+
+```
+
 - For More Refer - <https://wiki.termux.com/wiki/Termux:API>

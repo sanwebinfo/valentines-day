@@ -27,7 +27,6 @@ cd valentines-day
 php -S localhost:6003
 ```
 
-- Open New Terminal Window with Project Location
 - Generate Terminal Style Greeting image
 
 ```sh
@@ -35,12 +34,14 @@ php -S localhost:6003
 ## Set Execute Permission
 chmod a+x cli
 
-## run this on your terminal
-php cli
+## run this Below commands on terminal
+php cli create
+php cli greeting
 
 or 
 
-./cli
+./cli create
+./cli greeting
 
 ```
 
