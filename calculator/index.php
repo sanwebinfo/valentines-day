@@ -103,7 +103,7 @@ header('X-Content-Type-Options: nosniff');
               showResult(yourName, partnerName, resultElement);
           }
           percentage++;
-      }, 80);
+      }, 50);
 
       clearFields();
 
@@ -130,18 +130,33 @@ header('X-Content-Type-Options: nosniff');
       let colorClass;
 
       if (lovePercentage >= 90) {
-            message = "You both are perfect couple";
-            colorClass = "is-success";
-        } else if (lovePercentage >= 70) {
-            message = "Your relationship will be awesome carry on.";
-            colorClass = "is-info";
-        } else if (lovePercentage >= 30) {
-            message = "Trust and care for each other everything is gonna be ok.";
-            colorClass = "is-info";
-        } else {
-            message = "This isn't going to greate relationship makesure it's ok for you.";
-            colorClass = "is-danger";
-        }
+          message = "🌟 You two are meant to be together! You're like two peas in a pod!";
+          colorClass = "is-success";
+      } else if (lovePercentage >= 80) {
+          message = "💖 Wow! You're a perfect match! Your love is truly extraordinary!";
+          colorClass = "is-success";
+      } else if (lovePercentage >= 70) {
+          message = "😍 Your love is strong! Keep nurturing it and watch it flourish!";
+          colorClass = "is-success";
+      } else if (lovePercentage >= 60) {
+          message = "😊 Great compatibility! Keep enjoying each other's company!";
+          colorClass = "is-info";
+      } else if (lovePercentage >= 50) {
+          message = "🥰 You're doing great! Your relationship is filled with love and understanding!";
+          colorClass = "is-link";
+      } else if (lovePercentage >= 40) {
+          message = "😄 Not bad! There's potential. Work on understanding each other better!";
+          colorClass = "is-warning";
+      } else if (lovePercentage >= 30) {
+          message = "😅 Things could be better, but don't lose hope! Communication is key!";
+          colorClass = "is-warning";
+      } else if (lovePercentage >= 20) {
+          message = "😐 Hmm... Looks like there's some tension. Communication is key!";
+          colorClass = "is-danger";
+      } else {
+          message = "😬 Uh-oh... This might need some serious work! Seek support if needed!";
+          colorClass = "is-danger";
+      }
 
       resultElement.classList.add(colorClass);
       resultElement.innerHTML = `
