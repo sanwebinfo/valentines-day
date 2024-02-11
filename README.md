@@ -108,6 +108,11 @@ https://example.vercel.app/?name=partnername
 
 - you can also host it on your server - just upload the `index.php` file
 
+## Other tools
+
+- Love Calculator : `http://localhost:6003/calculator`
+- Love Calculator CLI : `php love yourname partnername`
+
 ## Credits
 
 Terminal Concept - <https://github.com/fobabs/ubuntu-terminal>

@@ -1,0 +1,107 @@
+#!/usr/bin/env php
+
+<?php
+
+/**
+ * This CLI used to calculate a Love Percentage Between you and Your partner.
+ * Valentine's Day Special Love Calculator CLI.
+ * Love Calculator: (https://love.sanweb.info/calculator/).
+ *
+ * CLI written by Santhosh MSK, sanweb (https://github.com/sanwebinfo)
+ * Free Online Valentine's Day Card Maker (https://love.sanweb.info)
+ *
+ */
+
+const ANSI_COLOR_RED = "\033[0;31m";
+const ANSI_COLOR_GREEN = "\033[0;32m";
+const ANSI_COLOR_YELLOW = "\033[0;33m";
+const ANSI_COLOR_BLUE = "\033[0;36m";
+const ANSI_COLOR_RESET = "\033[0m";
+
+function calculateLovePercentage($name1, $name2) {
+    $combined_name = strtolower($name1 . $name2);
+    $unique_characters = count(array_unique(str_split($combined_name)));
+    $total_characters = strlen($combined_name);
+    $love_percentage = ($unique_characters / $total_characters) * 100;
+    return round($love_percentage, 2);
+}
+
+function getLoveMessage($percentage) {
+    if ($percentage >= 90) {
+        return "🌟 You two are meant to be together! You're like two peas in a pod!";
+    } elseif ($percentage >= 80) {
+        return "💖 Wow! You're a perfect match! Your love is truly extraordinary!";
+    } elseif ($percentage >= 70) {
+        return "😍 Your love is strong! Keep nurturing it and watch it flourish!";
+    } elseif ($percentage >= 60) {
+        return "😊 Great compatibility! Keep enjoying each other's company!";
+    } elseif ($percentage >= 50) {
+        return "🥰 You're doing great! Your relationship is filled with love and understanding!";
+    } elseif ($percentage >= 40) {
+        return "😄 Not bad! There's potential. Work on understanding each other better!";
+    } elseif ($percentage >= 30) {
+        return "😅 Things could be better, but don't lose hope! Communication is key!";
+    } elseif ($percentage >= 20) {
+        return "😐 Hmm... Looks like there's some tension. Communication is key!";
+    } else {
+        return "😬 Uh-oh... This might need some serious work! Seek support if needed!";
+    }
+}
+
+function displayLoadingProgress() {
+    for ($i = 1; $i <= 100; $i++) {
+        $loader = '';
+        if ($i < 10) {
+            $loader = '⬆ ';
+        } elseif ($i < 30) {
+            $loader = '↗ ';
+        } elseif ($i < 50) {
+            $loader = '➡ ';
+        } elseif ($i < 70) {
+            $loader = '↘ ';
+        } elseif ($i < 90) {
+            $loader = '⬇ ';
+        } elseif ($i < 95) {
+            $loader = '↖ ';
+        } else {
+            $loader = '✅';
+        }
+        $color = ($i < 30) ? ANSI_COLOR_RED : (($i < 70) ? ANSI_COLOR_YELLOW : ANSI_COLOR_GREEN);
+        echo ANSI_COLOR_BLUE . "\rCalculating love.... $loader $color$i%" . ANSI_COLOR_RESET;
+        usleep(50000);
+    }
+    echo "\r\033[K";
+}
+
+function main($argv) {
+    if (count($argv) !== 3) {
+        echo ANSI_COLOR_RED . "❗ Usage: php love <name1> <name2>\n\n" . ANSI_COLOR_RESET;
+        exit(1);
+    }
+
+    $name1 = $argv[1];
+    $name2 = $argv[2];
+
+    if (!isValidName($name1) || !isValidName($name2)) {
+        echo ANSI_COLOR_RED . "❌ Invalid names. Only alphabetic characters and spaces are allowed.\n\n" . ANSI_COLOR_RESET;
+        exit(1);
+    }
+
+    displayLoadingProgress();
+
+    $love_percentage = calculateLovePercentage($name1, $name2);
+    $love_message = getLoveMessage($love_percentage);
+
+    echo "\r\033[K";
+    echo ANSI_COLOR_GREEN . "💖 Love percentage between $name1 and $name2 is: $love_percentage%\n" . ANSI_COLOR_RESET;
+    echo "\n" . ANSI_COLOR_YELLOW . "💬 Message: $love_message\n" . ANSI_COLOR_RESET;
+    echo "\n";
+}
+
+function isValidName($name) {
+    return preg_match('/^[a-zA-Z\s]+$/', $name);
+}
+
+main($argv);
+
+?>
