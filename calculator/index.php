@@ -20,6 +20,8 @@ header('X-Content-Type-Options: nosniff');
 
   <title>Love Calculator</title>
   <meta name="description" content="Valentine's Day Special Love Calculator -  Calculate Your Love Percentage."/>
+  <?php $current_page = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; echo '<link rel="canonical" href="'.$current_page.'" />'; ?>
+
 
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,7 +32,7 @@ header('X-Content-Type-Options: nosniff');
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
-      body {
+    body {
         font-family: 'Space Mono', monospace;
         background: #e27eeb;
         min-height: 100vh;
@@ -43,9 +45,6 @@ header('X-Content-Type-Options: nosniff');
     }
     p {
         font-family: 'Space Mono', monospace;
-    }
-    #progress {
-      display: none;
     }
   </style>
 
@@ -75,47 +74,56 @@ header('X-Content-Type-Options: nosniff');
           <button class="button is-danger" onclick="clearFields()">Clear</button>
         </div>
       </div>
-      <progress class="progress is-primary" id="progress" max="100">15%</progress>
-      <div class="notification is-hidden is-warning" id="loadingText">Calculating...</div>
+      <div class="notification is-hidden is-warning" id="loadingText"></div>
       <div class="notification is-hidden" id="result"></div>
     </div>
 </section>
 
 <script>
     function calculateLove() {
-      const yourName = document.getElementById('yourName').value.trim();
-      const partnerName = document.getElementById('partnerName').value.trim();
-
+      const yourName = document.getElementById('yourName').value.trim().toLowerCase();
+      const partnerName = document.getElementById('partnerName').value.trim().toLowerCase();
+      localStorage.setItem("yourName", yourName);
+      localStorage.setItem("partnerName", partnerName);
+  
       if (!isValidName(yourName) || !isValidName(partnerName)) {
         showAlert('Please enter a valid names (English text only supported).');
         return;
       }
 
-      const progressElement = document.getElementById('progress');
       const loadingTextElement = document.getElementById('loadingText');
       const resultElement = document.getElementById('result');
-
-      progressElement.style.display = 'block';
       loadingTextElement.classList.remove('is-hidden');
-
+      let percentage = 1;
       const interval = setInterval(() => {
-        progressElement.value += 5;
-        if (progressElement.value >= 100) {
-          clearInterval(interval);
-          progressElement.style.display = 'none';
-          loadingTextElement.classList.add('is-hidden');
-          showResult(yourName, partnerName, resultElement);
-        }
-      }, 100);
+          loadingTextElement.innerHTML = "Calculating...." + percentage + "%";
+          if (percentage === 100) {
+              clearInterval(interval);
+              loadingTextElement.classList.add('is-hidden');
+              showResult(yourName, partnerName, resultElement);
+          }
+          percentage++;
+      }, 80);
 
       clearFields();
+
     }
     function isValidName(name) {
       return /^[a-zA-Z\s]*$/.test(name) && name.trim() !== '';
     }
     function showResult(yourName, partnerName, resultElement) {
-      const lovePercentage = Math.floor(Math.random() * 100) + 1;
 
+      const lovername = localStorage.getItem("yourName");
+      const partnersname = localStorage.getItem("partnerName");
+      var lovePercentage = 0;
+
+      for (var i = 0; i < lovername.length; i++) {
+            for (var j = 0; j < partnersname.length; j++) {
+                 lovePercentage += lovername.charCodeAt(i) * partnersname.charCodeAt(j);
+              }
+           }
+
+      lovePercentage = lovePercentage % 101;
       resultElement.classList.remove('is-hidden');
 
       let message;
@@ -145,8 +153,6 @@ header('X-Content-Type-Options: nosniff');
       document.getElementById('yourName').value = '';
       document.getElementById('partnerName').value = '';
       document.getElementById('result').classList.add('is-hidden');
-      document.getElementById('progress').style.display = 'none';
-      document.getElementById('progress').value = 0;
       clearAlert();
     }
     function showAlert(message) {
