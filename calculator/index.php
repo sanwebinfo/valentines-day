@@ -195,7 +195,7 @@ header('X-Content-Type-Options: nosniff');
           message = "😄 Not bad There's potential. Work on understanding each other better";
           colorClass = "is-warning";
       } else if (lovePercentage >= 30) {
-          message = "😅 Things could be better, but don't lose hope! Communication is key";
+          message = "😅 Things could be better, but don't lose hope Communication is key";
           colorClass = "is-warning";
       } else if (lovePercentage >= 20) {
           message = "😐 Hmm... Looks like there's some tension. Communication is key";

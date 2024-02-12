@@ -28,23 +28,23 @@ function calculateLovePercentage($name1, $name2) {
 
 function getLoveMessage($percentage) {
     if ($percentage >= 90) {
-        return "🌟 You two are meant to be together! You're like two peas in a pod!";
+        return "🌟 You two are meant to be together You're like two peas in a pod";
     } elseif ($percentage >= 80) {
-        return "💖 Wow! You're a perfect match! Your love is truly extraordinary!";
+        return "💖 Wow You're a perfect match Your love is truly extraordinary";
     } elseif ($percentage >= 70) {
-        return "😍 Your love is strong! Keep nurturing it and watch it flourish!";
+        return "😍 Your love is strong Keep nurturing it and watch it flourish";
     } elseif ($percentage >= 60) {
-        return "😊 Great compatibility! Keep enjoying each other's company!";
+        return "😊 Great compatibility Keep enjoying each other's company";
     } elseif ($percentage >= 50) {
-        return "🥰 You're doing great! Your relationship is filled with love and understanding!";
+        return "🥰 You're doing great Your relationship is filled with love and understanding";
     } elseif ($percentage >= 40) {
-        return "😄 Not bad! There's potential. Work on understanding each other better!";
+        return "😄 Not bad There's potential. Work on understanding each other better";
     } elseif ($percentage >= 30) {
-        return "😅 Things could be better, but don't lose hope! Communication is key!";
+        return "😅 Things could be better, but don't lose hope Communication is key";
     } elseif ($percentage >= 20) {
-        return "😐 Hmm... Looks like there's some tension. Communication is key!";
+        return "😐 Hmm... Looks like there's some tension. Communication is key";
     } else {
-        return "😬 Uh-oh... This might need some serious work! Seek support if needed!";
+        return "😬 Uh-oh... This might need some serious work";
     }
 }
 
