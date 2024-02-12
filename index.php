@@ -47,28 +47,42 @@ function pageurl(){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
     body {
-        font-family: 'Space Mono', monospace;
+        font-family: 'Fira Code', monospace;
         background: #9AECDB;
         min-height: 100vh;
+        font-weight: 600;
+    }
+    p {
+      font-family: 'Fira Code', monospace;
+      letter-spacing: .03em;
+      line-height: 20px;
+      margin-bottom: 20px;
+      word-wrap: break-word;
+      font-size: 16px;
+      color: #221f1f;
+     -moz-osx-font-smoothing: grayscale;
+     -webkit-font-smoothing: antialiased !important;
+     -moz-font-smoothing: antialiased !important;
+     text-rendering: optimizelegibility !important;
     }
     pre {
-    font-family: 'Space Mono', monospace;
-    font-size:14px;
-    color: #fdcb6e;
-    text-shadow: 0 0 3px #fdcb6e;
-    line-height: 1.5em;
-    background:  #2c001e;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased !important;
-    -moz-font-smoothing: antialiased !important;
-    text-rendering: optimizelegibility !important;
+     font-family: monospace;
+     font-size: 14px;
+     color: #fdcb6e;
+     text-shadow: 0 0 3px #fdcb6e;
+     line-height: 1.5em;
+     background:  #2c001e;
+     -moz-osx-font-smoothing: grayscale;
+     -webkit-font-smoothing: antialiased !important;
+     -moz-font-smoothing: antialiased !important;
+     text-rendering: optimizelegibility !important;
 }
 .join-more {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 14px;
     text-transform: uppercase;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -99,7 +113,7 @@ pre code {
     max-width: 100%;
 }
 .sign-button {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     text-transform: uppercase;
     padding: 12px;
@@ -116,6 +130,8 @@ textarea,
 }
 button {
     max-width: 100%;
+    font-family: 'Fira Code', monospace;
+    font-weight: 600;
 }
 .card-content.login {
     background-color: #ffe96e;
@@ -132,10 +148,10 @@ button {
         padding-bottom: 50px;
 }
 .user-form {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Fira Code', monospace;
 }
 .user-form p {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Fira Code', monospace;
     letter-spacing: .03em;
     line-height: 20px;
     margin-bottom: 20px;
@@ -148,10 +164,10 @@ button {
    text-rendering: optimizelegibility !important;
 }
 .user-form button {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Fira Code', monospace;
     display: flex;
     flex-grow: 0.3;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     text-transform: uppercase;
     border-radius: 32px;
@@ -162,10 +178,10 @@ button {
    text-rendering: optimizelegibility !important;
 }
 .user-form input {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Fira Code', monospace;
     display: flex;
     flex-grow: 0.3;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     border-radius: 32px;
     padding: 12px;
@@ -175,7 +191,7 @@ button {
    text-rendering: optimizelegibility !important;
 }
 input {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Fira Code', monospace;
     text-align: center;
 }
     ::-webkit-input-placeholder {
